@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.0a9
+------------------
+
+- Now displays sermons in a reverse sorted manner [David Bain]
+
 1.0a4
 -------------------
 

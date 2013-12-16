@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0a8'
+version = '1.0a9'
 
 setup(name='church.sermonaudio',
       version=version,
