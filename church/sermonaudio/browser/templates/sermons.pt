@@ -28,9 +28,15 @@
              ">
 
 
-        <tbody>
-          <tr tal:repeat="item python:context.restrictedTraverse('@@folderListing')(sort_on='date')"
-              tal:attributes="id  item/id">
+        <tbody tal:define="
+           Batch python:modules['Products.CMFPlone'].Batch;
+           b_size python:int(request.get('b_size', 20));
+           b_start python:int(request.get('b_start', 0));
+           results python:context.restrictedTraverse('@@folderListing')(sort_on='date',batch=True,sort_order='reverse', b_size=b_size, b_start=b_start);
+           batch python:Batch(results, b_size, b_start);">
+<tr tal:repeat="item results"               
+      tal:attributes="id  item/id">
+
             
             <td class="sermon-data sermon-title">
               <h4 tal:content="item/Title">
@@ -56,10 +62,11 @@
                
            </td>
           </tr>
+           <div metal:use-macro="here/batch_macros/macros/navigation" />
         </tbody>
 
       </table>
-
+      
       </metal:content-core>
     </metal:content-core>
 
